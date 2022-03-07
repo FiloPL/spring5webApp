@@ -38,16 +38,21 @@ public class BootStrapData implements CommandLineRunner {
 //        dzik.getBooks().add(firstBook);
 //        firstBook.getAuthors().add(dzik);
 
+        firstBook.setPublisher(publisher);
         bookRepository.save(firstBook);
         authorRepository.save(dzik);
+        publisherRepository.save(publisher);
 
         Author bellu = new Author("Bella", "Cat");
         Book secondBook = new Book("miau", "786712");
 //        bellu.getBooks().add(secondBook);
 //        secondBook.getAuthors().add(bellu);
 
+        secondBook.setPublisher(publisher);
+
         bookRepository.save(secondBook);
         authorRepository.save(bellu);
+        publisherRepository.save(publisher);
 
         System.out.println("started from bookstrap");
         System.out.println("Numer of books " + bookRepository.count());
