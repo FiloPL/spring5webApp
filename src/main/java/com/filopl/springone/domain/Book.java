@@ -6,6 +6,10 @@ import java.util.Set;
 
 @Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String title;
     private String isbn;
 
@@ -17,10 +21,6 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     public Book() {
     }
 
@@ -29,12 +29,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
+    public Long getId() {
+        return id;
     }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -53,21 +53,20 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override
     public String toString() {
         return "Book{" +
+                ", id=" + id + '\'' +
                 "title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
-                ", id=" + id +
                 '}';
     }
 
